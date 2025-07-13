@@ -1,0 +1,16 @@
+# Ignorar archivos de informes
+informe.pdf
+informe.xlsx
+informe.json
+
+# Archivos temporales y del sistema
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.DS_Store
+Thumbs.db
+
+# Entornos virtuales
+env/
+venv/

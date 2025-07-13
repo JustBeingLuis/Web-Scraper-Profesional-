@@ -1,0 +1,8 @@
+selenium
+beautifulsoup4
+requests
+fpdf
+pandas
+openpyxl
+webdriver-manager
+Pillow
