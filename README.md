@@ -105,7 +105,7 @@ y revisar si están correctos antes de generar los informes.
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/tuusuario/web-scraper-app.git
+git clone https://github.com/JustBeingLuis/Web-Scraper-Profesional-.git
 cd web-scraper-app
 
 # Instalar dependencias
