@@ -1,5 +1,5 @@
 
-# 🕷️ Web Scraper Profesional para E-commerce
+# 🕷️ Web Scraper Profesional 
 
 Este proyecto es una herramienta de **scraping profesional automatizado**, diseñada para extraer información de productos desde sitios web de comercio electrónico que utilizan contenido dinámico (renderizado con JavaScript). La aplicación genera automáticamente **informes en tres formatos**: `PDF`, `Excel` y `JSON`, incluyendo el **nombre del producto, precio e imagen** de cada ítem disponible.
 
