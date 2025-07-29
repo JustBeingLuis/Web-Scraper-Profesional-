@@ -1,95 +1,94 @@
+# 🕷️ Professional Web Scraper
 
-# 🕷️ Web Scraper Profesional 
+This project is a tool for **automated professional scraping**, designed to extract product information from e-commerce websites that use dynamic content (JavaScript-rendered). The application automatically generates **reports in three formats**: `PDF`, `Excel`, and `JSON`, including the **product name, price, and image** for each available item.
 
-Este proyecto es una herramienta de **scraping profesional automatizado**, diseñada para extraer información de productos desde sitios web de comercio electrónico que utilizan contenido dinámico (renderizado con JavaScript). La aplicación genera automáticamente **informes en tres formatos**: `PDF`, `Excel` y `JSON`, incluyendo el **nombre del producto, precio e imagen** de cada ítem disponible.
-
-> 🔎 Este scraper ha sido probado exitosamente con el sitio oficial de [Tiendas D1](https://domicilios.tiendasd1.com/), específicamente en la categoría de congelados.
-
----
-
-## 📌 Características Principales
-
-| Funcionalidad                        | Descripción |
-|-------------------------------------|-------------|
-| 🧠 Scraping inteligente              | Usa `Selenium` para procesar contenido dinámico. |
-| 📦 Extracción de datos estructurados| Nombre, precio e imagen del producto. |
-| 🧾 Exportación en formatos múltiples | JSON, Excel (`.xlsx`) y PDF con imágenes integradas. |
-| 🛠️ Código modular y extensible       | Separación clara de funciones por archivo. |
-| 💡 Adaptable a múltiples páginas    | Soporte para ajustar selectores y estructuras HTML. |
+> 🔎 This scraper has been successfully tested on the official website of [Tiendas D1](https://domicilios.tiendasd1.com/), specifically in the frozen food category.
 
 ---
 
-## 🚀 ¿Cómo funciona?
+## 📌 Main Features
 
-1. El usuario ingresa la URL de la página que desea scrapear.
-2. Se lanza un navegador automatizado (como Edge o Brave) mediante Selenium.
-3. Se espera a que cargue el contenido dinámico (productos).
-4. Se extrae la información relevante utilizando `BeautifulSoup`.
-5. Se generan 3 tipos de informes automáticamente:
-   - 📄 `informe.pdf` con texto e imágenes.
-   - 📊 `informe.xlsx` listo para análisis en Excel o Power BI.
-   - 🧾 `informe.json` con la estructura de los datos.
+| Functionality                         | Description |
+|--------------------------------------|-------------|
+| 🧠 Smart scraping                     | Uses `Selenium` to handle dynamic content. |
+| 📦 Structured data extraction         | Extracts product name, price, and image. |
+| 🧾 Multi-format reporting             | JSON, Excel (`.xlsx`), and PDF with embedded images. |
+| 🛠️ Modular and extensible codebase   | Clear separation of logic into individual files. |
+| 💡 Adaptable to multiple websites     | Support for modifying selectors and HTML structure. |
 
 ---
 
-## 📁 Estructura del proyecto
+## 🚀 How does it work?
+
+1. The user provides the URL of the page to scrape.
+2. An automated browser (Edge or Brave) is launched using Selenium.
+3. The script waits for the dynamic content (products) to load.
+4. Relevant information is extracted using `BeautifulSoup`.
+5. Three types of reports are automatically generated:
+   - 📄 `report.pdf` with text and product images.
+   - 📊 `report.xlsx` ready for analysis in Excel or Power BI.
+   - 🧾 `report.json` containing structured data.
+
+---
+
+## 📁 Project Structure
 
 ```
 web-scraper-app/
-├── main.py              # Script principal (ejecuta todo)
-├── scraper.py           # Lógica de scraping y parsing HTML
-├── reports.py           # Generación de informes PDF, Excel y JSON
-├── requirements.txt     # Dependencias del proyecto
-├── informe.xlsx         # Informe generado en Excel
-├── informe.pdf          # Informe PDF con imágenes
-├── informe.json         # Datos en formato estructurado
+├── main.py              # Main script (orchestrates the process)
+├── scraper.py           # Scraping and HTML parsing logic
+├── reports.py           # Report generation (PDF, Excel, JSON)
+├── requirements.txt     # Project dependencies
+├── report.xlsx          # Generated Excel report
+├── report.pdf           # PDF report with product images
+├── report.json          # Structured data output
 ```
 
 ---
 
-## 🔧 ¿Cómo adaptarlo a otras páginas?
+## 🔧 How to adapt it to other websites?
 
-Este scraper **es totalmente adaptable a otros sitios web**, pero es necesario comprender cómo funciona la estructura del HTML en cada caso. Aquí están los pasos para adaptarlo:
+This scraper is **fully adaptable to other websites**, but you must understand the structure of their HTML. Follow these steps to customize it:
 
-### 1. 🔍 Analiza el HTML de la nueva página
+### 1. 🔍 Inspect the HTML of the target page
 
-- Abre el navegador, haz clic derecho sobre el producto y selecciona **"Inspeccionar"**.
-- Identifica el **contenedor principal** de cada producto (ej. `div.product-card`, `li.item`, etc.).
-- Dentro de ese contenedor, ubica:
-  - **Nombre del producto**: ¿está en un `<p>`, `<h2>`, `<span>`?
-  - **Precio**: ¿es un `<p>`, `<div>`?
-  - **Imagen**: busca la etiqueta `<img>` y asegúrate de extraer el atributo `src`.
+- Open your browser, right-click on a product, and select **"Inspect"**.
+- Identify the **main container** for each product (e.g., `div.product-card`, `li.item`, etc.).
+- Inside that container, locate:
+  - **Product name**: Is it in a `<p>`, `<h2>`, `<span>`?
+  - **Price**: Is it a `<p>`, `<div>`?
+  - **Image**: Look for an `<img>` tag and extract the `src` attribute.
 
-### 2. ✍️ Ajusta los selectores CSS
+### 2. ✍️ Adjust the CSS selectors
 
-Los selectores actuales funcionan solo para Tiendas D1. Para otros sitios debes modificar:
+The current selectors only work for Tiendas D1. For other websites, you’ll need to update:
 
-- La clase del **contenedor del producto**
-- La clase y tipo de etiqueta donde se encuentra el **nombre**
-- La clase y tipo de etiqueta donde está el **precio**
-- La ubicación de la **imagen** (`img`) si existe
+- The class of the **product container**
+- The tag and class where the **name** is located
+- The tag and class where the **price** is located
+- The location of the **image** (`<img>`) if available
 
-> ⚠️ **Importante:** El selector debe incluir tanto la **etiqueta HTML** como su clase, por ejemplo:  
-> `p.nombre-producto`, `div.precio`, `img.product-image`.
+> ⚠️ **Important:** Each selector should include both the **HTML tag** and the class, e.g.:  
+> `p.product-name`, `div.price`, `img.product-image`.
 
-### 3. ✅ Verifica que los datos estén bien extraídos
+### 3. ✅ Verify the extracted data
 
-Puedes imprimir temporalmente los productos extraídos en consola con:
+You can temporarily print the extracted products to the console with:
 
 ```python
-print(productos)
+print(products)
 ```
 
-y revisar si están correctos antes de generar los informes.
+and check if everything looks correct before generating the reports.
 
 ---
 
-## 🧪 Requisitos del entorno
+## 🧪 Environment Requirements
 
-- Python 3.8 o superior
-- Navegador **Microsoft Edge** (recomendado por compatibilidad con Selenium)
-- Google Chrome o Brave (también soportados, con ajustes)
-- Paquetes requeridos:
+- Python 3.8 or higher
+- **Microsoft Edge** browser (recommended for Selenium compatibility)
+- Google Chrome or Brave (also supported with minor adjustments)
+- Required packages:
   - `selenium`
   - `bs4`
   - `requests`
@@ -101,29 +100,31 @@ y revisar si están correctos antes de generar los informes.
 
 ---
 
-## ⚙️ Uso del proyecto
+## ⚙️ How to use the project
 
 ```bash
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/JustBeingLuis/Web-Scraper-Profesional-.git
 cd web-scraper-app
 
-# Instalar dependencias
+# Install dependencies
 pip install -r requirements.txt
 
-# Ejecutar el scraper
+# Run the scraper
 python main.py
 ```
 
-## 👨‍💻 Autor
+---
+
+## 👨‍💻 Author
 
 **Luis Toscano**  
-Estudiante de Ingeniería de Sistemas – UIS  
-🔬 Proyecto desarrollado con fines investigativos y de portafolio.  
-Presentado en el marco de prácticas de scraping profesional.
+Computer Science Student – UIS  
+🔬 Project developed for research and portfolio purposes.  
+Presented as part of professional web scraping practices.
 
 ---
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto es de libre uso educativo. No se recomienda utilizarlo para scraping masivo sin autorización de las páginas web involucradas.
+This project is free to use for educational purposes. It is not recommended for large-scale scraping without proper authorization from the websites involved.
